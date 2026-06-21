@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مک اوربیت | درخواست ساخت اپل آیدی اختصاصی</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #0b0f19; }
+    </style>
+</head>
+<body class="text-gray-200 min-h-screen flex flex-col justify-between overflow-x-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-gray-950 to-gray-950">
+
+    <header class="max-w-4xl mx-auto w-full px-6 pt-8 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full border border-blue-500 flex items-center justify-center relative">
+                <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full absolute -top-0.5"></div>
+                <span class="text-white text-xs font-bold">M</span>
+            </div>
+            <span class="text-lg font-black text-white">Mac<span class="text-blue-500">Orbit</span></span>
+        </div>
+        <a href="/account/dashboard" class="text-xs text-gray-400 hover:text-white transition flex items-center gap-1">
+            بازگشت به صفحه اصلی 
+            <span>←</span>
+        </a>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-4 py-12">
+        <div class="max-w-2xl w-full bg-gray-900/60 backdrop-blur-xl border border-gray-800 p-8 rounded-3xl shadow-2xl shadow-blue-950/20 relative overflow-hidden">
+            
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="text-center mb-8 relative z-10">
+                <h1 class="text-2xl font-black text-white mb-2">درخواست ساخت اپل آیدی اختصاصی</h1>
+                <p class="text-xs text-gray-400 leading-relaxed">مشخصات خود را دقیق و مطابق با ساختار درخواستی وارد کنید. اکانت روی ایمیل شخصی شما ست خواهد شد.</p>
+            </div>
+
+            <div class="flex items-center justify-center gap-3 mb-8 text-xs max-w-sm mx-auto">
+                <div class="flex items-center gap-2 text-blue-400 font-semibold">
+                    <span class="w-5 h-5 rounded-full bg-blue-500/10 border border-blue-500 flex items-center justify-center text-[10px]">۱</span>
+                    تکمیل اطلاعات
+                </div>
+                <div class="h-px bg-gray-800 flex-grow"></div>
+                <div class="flex items-center gap-2 text-gray-500">
+                    <span class="w-5 h-5 rounded-full bg-gray-950 border border-gray-800 flex items-center justify-center text-[10px]">۲</span>
+                    صدور فاکتور و ساخت
+                </div>
+            </div>
+
+            <form method="POST" action="" class="space-y-6 relative z-10">
+                {% csrf_token %}
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-2">نام (به فارسی)</label>
+                        <input type="text" name="fa_firstname" required placeholder="مثال: مبین"
+                               class="w-full bg-gray-950/80 border border-gray-800 focus:border-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-2">نام خانوادگی (به فارسی)</label>
+                        <input type="text" name="fa_lastname" required placeholder="مثال: صادقیان"
+                               class="w-full bg-gray-950/80 border border-gray-800 focus:border-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-2">نام (به انگلیسی - مطابق پاسپورت)</label>
+                        <input type="text" name="en_firstname" required placeholder="مثال: Mobin" dir="ltr"
+                               class="w-full bg-gray-950/80 border border-gray-800 focus:border-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition text-left">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-2">نام خانوادگی (به انگلیسی)</label>
+                        <input type="text" name="en_lastname" required placeholder="مثال: Sadeqian" dir="ltr"
+                               class="w-full bg-gray-950/80 border border-gray-800 focus:border-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition text-left">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-2">آدرس ایمیل اصلی شما</label>
+                    <input type="email" name="user_email" required placeholder="example@gmail.com" dir="ltr"
+                           class="w-full bg-gray-950/80 border border-gray-800 focus:border-blue-500 rounded-xl px-4 py-3 text-sm text-white placeholder-gray-600 focus:outline-none transition text-left">
+                    <p class="text-[10px] text-gray-500 mt-1.5">کد تاییدیه اپل برای فعال‌سازی به این ایمیل فرستاده می‌شود؛ مطمئن شوید به آن دسترسی دارید.</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-2">تاریخ تولد (دقیقاً به میلادی)</label>
+                    <input type="date" name="user_birthdate" required dir="ltr"
+                           class="w-full bg-gray-950/80 border border-gray-800 focus:border-blue-500 rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition text-left [&::-webkit-calendar-picker-indicator]:invert">
+                    <p class="text-[10px] text-amber-500/80 mt-1.5">⚠️ اهمیت حیاتی: در صورت فراموشی رمز عبور، اپل این تاریخ را از شما خواهد پرسید.</p>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl transition text-sm shadow-xl shadow-indigo-600/10">
+                        ثبت اطلاعات و رفتن به مدار پرداخت
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="text-center py-6 text-[10px] text-gray-600 border-t border-gray-950">
+        <p>© ۲۰۲۶ مک‌اوربیت. امنیت و حریم خصوصی در اکوسیستم اپل.</p>
+    </footer>
+
+</body>
+</html>

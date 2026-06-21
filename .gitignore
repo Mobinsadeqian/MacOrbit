@@ -1,0 +1,31 @@
+# Byte-compiled / optimized / Notes bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django local settings / sensitive data
+db.sqlite3
+db.sqlite3-journal
+.env
+local_settings.py
+secrets.json
+
+# Python Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# JetBrains IDEs (PyCharm, WebStorm, etc.)
+.idea/
+
+# VS Code configurations
+.vscode/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Media and Static directories (optional - if you want to avoid uploading user media)
+media/
+# static/ (Do not ignore if you manage basic static files via git, but ignore if they are collected)

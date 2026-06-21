@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مک اوربیت | ورود به حساب کاربری</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #0b0f19; }
+    </style>
+</head>
+<body class="text-gray-200 min-h-screen flex flex-col justify-between overflow-x-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-950/30 via-gray-950 to-gray-950">
+
+    <header class="max-w-md mx-auto w-full px-6 pt-12 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-full border border-blue-500 flex items-center justify-center relative">
+                <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full absolute -top-0.5"></div>
+                <span class="text-white text-xs font-bold">M</span>
+            </div>
+            <span class="text-lg font-black text-white">Mac<span class="text-blue-500">Orbit</span></span>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-4 py-8">
+        <div class="max-w-sm w-full bg-gray-900/40 backdrop-blur-xl border border-gray-800/80 p-8 rounded-3xl shadow-2xl shadow-blue-950/10 relative overflow-hidden">
+            
+            <div class="absolute -top-12 -left-12 w-36 h-36 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="text-center mb-6 relative z-10">
+                <h1 class="text-xl font-black text-white mb-1.5">خوش آمدید</h1>
+                <p class="text-xs text-gray-400">جهت ورود به مدار، مشخصات خود را وارد کنید</p>
+            </div>
+
+            <form method="POST" action="" class="space-y-4 relative z-10">
+                {% csrf_token %}
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-1.5">نام کاربری</label>
+                    <input type="text" name="username" required placeholder="username" dir="ltr"
+                           class="w-full bg-gray-950/80 border border-gray-800 focus:border-blue-500 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none transition text-left">
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <label class="block text-xs font-semibold text-gray-400">رمز عبور</label>
+                        <a href="#" class="text-[10px] text-gray-500 hover:text-blue-400 transition">رمز عبور را فراموش کرده‌اید؟</a>
+                    </div>
+                    <input type="password" name="user_password" required placeholder="••••••••" dir="ltr"
+                           class="w-full bg-gray-950/80 border border-gray-800 focus:border-blue-500 rounded-xl px-4 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none transition text-left tracking-widest">
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3 px-6 rounded-xl transition text-xs shadow-lg shadow-blue-600/10">
+                        ورود به حساب کاربری
+                    </button>
+                </div>
+
+                <div class="text-center pt-2">
+                    <p class="text-[11px] text-gray-500">
+                        قبلاً ثبت‌نام نکرده‌اید؟ 
+                        <a href="/account/signup/" class="text-blue-400 hover:underline font-semibold">ساخت حساب کاربری</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="text-center py-4 text-[10px] text-gray-600 border-t border-gray-950">
+        <p>© ۲۰۲۶ مک‌اوربیت. ورود امن و رمزنگاری‌شده.</p>
+    </footer>
+        {% if messages %}
+        {% for message in messages %}
+            <script>
+                alert("{{ message }}");
+            </script>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

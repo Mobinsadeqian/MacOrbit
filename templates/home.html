@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مک اوربیت | دنیای خدمات و نرم‌افزارهای مک</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #0b0f19; }
+        /* افکت انیمیشن مدار برای بخش هیرو */
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .orbit-circle { animation: orbit 20s linear infinite; }
+    </style>
+</head>
+<body class="text-gray-200 overflow-x-hidden">
+
+    <header class="border-b border-gray-800 bg-gray-950/70 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full border-2 border-blue-500 flex items-center justify-center relative">
+                    <div class="w-2 h-2 bg-cyan-400 rounded-full absolute -top-1"></div>
+                    <span class="text-white text-xs font-bold">M</span>
+                </div>
+                <span class="text-xl font-black tracking-wider text-white">Mac<span class="text-blue-500">Orbit</span></span>
+            </div>
+            <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#" class="text-blue-400 hover:text-white transition">صفحه اصلی</a>
+                <a href="#" class="hover:text-white transition">دانلود نرم‌افزار</a>
+                <a href="appleid/" class="hover:text-white transition">خدمات اپل آیدی</a>
+                <a href="#" class="hover:text-white transition">پشتیبانی و تیکت</a>
+            </nav>
+            <div>
+                <a href="/account" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition shadow-lg shadow-blue-600/20">ورود / ثبت نام</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-between gap-12">
+        <div class="z-10 max-w-2xl text-center md:text-right">
+            <div class="inline-flex items-center gap-2 bg-gray-900 border border-gray-800 px-3 py-1.5 rounded-full text-xs text-gray-400 mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                پلتفرم اختصاصی اکوسیستم اپل در ایران
+            </div>
+            <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
+                وارد مدار کاربران <br class="hidden md:block"> حرفه‌ای <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400">اپل</span> شوید
+            </h1>
+            <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-xl">
+                مک‌اوربیت اینجاست تا محدودیت‌ها را دور بزند. از دانلود امن‌ترین نرم‌افزارهای کرک‌شده مک تا ساخت و پشتیبانی فوری اپل آیدی اختصاصی شما.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                <a href="#apps" class="bg-gray-800 hover:bg-gray-750 border border-gray-750 text-white font-semibold px-8 py-4 rounded-2xl transition text-center">جستجوی نرم‌افزارها</a>
+                <a href="#appleid" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold px-8 py-4 rounded-2xl transition text-center shadow-xl shadow-indigo-600/20">خرید فوری اپل آیدی</a>
+            </div>
+        </div>
+
+        <div class="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center opacity-80 md:opacity-100">
+            <div class="absolute w-full h-full border border-dashed border-gray-800 rounded-full orbit-circle">
+                <div class="w-4 h-4 bg-blue-500 rounded-full absolute top-10 left-10 shadow-lg shadow-blue-500/50"></div>
+            </div>
+            <div class="absolute w-3/4 h-3/4 border border-gray-800 rounded-full"></div>
+            <div class="w-32 h-32 bg-gradient-to-tr from-blue-600 to-indigo-900 rounded-3xl flex items-center justify-center shadow-2xl shadow-indigo-500/30 transform rotate-12">
+                <span class="text-white font-black text-4xl transform -rotate-12">mac</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-8">
+        
+        <div id="appleid" class="bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-850 p-8 rounded-3xl hover:border-blue-500/40 transition group relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-32 h-32 bg-blue-600/10 rounded-full blur-3xl group-hover:bg-blue-600/20 transition"></div>
+            <div class="w-12 h-12 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-400 mb-6 font-bold text-lg">iD</div>
+            <h3 class="text-2xl font-bold text-white mb-4">خدمات تخصصی اپل آیدی</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                ساخت اکانت کاملاً اختصاصی روی ایمیل شما بدون نیاز به شماره تلفن مجازی، یا خرید فوری اکانت‌های آماده و معتبر با گارانتی دائم.
+            </p>
+            <ul class="text-xs text-gray-500 space-y-3 mb-8">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> تحویل آنی اطلاعات برای اکانت‌های آماده</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> تنظیم روی ایمیل شخصی و ریجن دلخواه</li>
+            </ul>
+            <a href="#" class="w-full block text-center bg-gray-850 hover:bg-gray-800 border border-gray-800 text-white text-sm font-semibold py-3.5 rounded-xl transition">ورود به میز خدمات اپل آیدی</a>
+        </div>
+
+        <div id="apps" class="bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-850 p-8 rounded-3xl hover:border-cyan-500/40 transition group relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-32 h-32 bg-cyan-600/10 rounded-full blur-3xl group-hover:bg-cyan-600/20 transition"></div>
+            <div class="w-12 h-12 bg-cyan-600/10 rounded-2xl flex items-center justify-center text-cyan-400 mb-6 font-bold text-lg">App</div>
+            <h3 class="text-2xl font-bold text-white mb-4">آرشیو نرم‌افزار و بازی مک</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                دانلود جدیدترین برنامه‌های تخصصی، گرافیکی و برنامه‌نویسی مک، کاملاً تست شده و سازگار با پردازنده‌های Intel و تراشه‌های Apple Silicon.
+            </p>
+            <ul class="text-xs text-gray-500 space-y-3 mb-8">
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> همراه با راهنمای قدم‌به‌قدم رفع ارورهای نصب</li>
+                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> لینک مستقیم نیم‌بها و پرسرعت</li>
+            </ul>
+            <a href="#" class="w-full block text-center bg-gray-850 hover:bg-gray-800 border border-gray-800 text-white text-sm font-semibold py-3.5 rounded-xl transition">ورود به مرکز دانلود مک</a>
+        </div>
+
+    </section>
+
+    <section class="max-w-7xl mx-auto px-6 py-8 mb-16">
+        <div class="bg-gray-950 border border-gray-900 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-right">
+                <h4 class="text-white font-bold text-sm mb-1">وضعیت اتصال سرویس‌های اپل</h4>
+                <p class="text-xs text-gray-500">بررسی زنده اختلالات و وضعیت دسترسی به سرورهای اپل در اپراتورهای ایران</p>
+            </div>
+            <div class="flex flex-wrap gap-6 justify-center">
+                <div class="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-xl border border-gray-850">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span class="text-xs font-medium text-gray-400">اپ‌استور (App Store)</span>
+                </div>
+                <div class="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-xl border border-gray-850">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                    <span class="text-xs font-medium text-gray-400">آیکلود (iCloud)</span>
+                </div>
+                <div class="flex items-center gap-2 bg-gray-900/50 px-4 py-2 rounded-xl border border-gray-850">
+                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                    <span class="text-xs font-medium text-gray-400">آی‌مسج و فیس‌تایم</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-gray-900 py-8 bg-gray-950 text-center text-xs text-gray-600">
+        <p>© ۲۰۲۶ مک‌اوربیت. تمامی حقوق برای شما و تیم توسعه محفوظ است.</p>
+    </footer>
+
+</body>
+</html>
