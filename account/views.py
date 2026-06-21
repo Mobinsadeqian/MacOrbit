@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout as auth_logout
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
@@ -34,3 +34,7 @@ def register_user(request):
 @login_required(login_url='/account/')
 def user_dashboard(request):
     return render(request, 'account/user_dashboard.html')
+
+def logout_user(request):
+    auth_logout(request)  
+    return redirect('login_user')

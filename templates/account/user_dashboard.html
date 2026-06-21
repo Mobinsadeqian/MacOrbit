@@ -24,7 +24,7 @@
             
             <div class="flex items-center gap-4">
                 <span class="text-xs text-gray-400">خوش آمدی، <strong class="text-white">{{ request.user.name }}</strong></span>
-                <a href="/" class="text-xs bg-gray-900 border border-gray-800 hover:border-red-500/50 hover:text-red-400 px-3 py-1.5 rounded-xl transition">خروج</a>
+                <a href="{% url 'logout_user' %}" class="text-xs bg-gray-900 border border-gray-800 hover:border-red-500/50 hover:text-red-400 px-3 py-1.5 rounded-xl transition">خروج</a>
             </div>
         </div>
     </header>
