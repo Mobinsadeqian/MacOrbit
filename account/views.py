@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from appleacount.models import AppleIdOrder
+from ticket.models import Ticket, TicketMessage
 
 User = get_user_model()
 
@@ -37,8 +38,10 @@ def register_user(request):
 @login_required(login_url='login_user')
 def user_dashboard(request):
     orders = AppleIdOrder.objects.filter(user=request.user).order_by('-id')
+    tickets = Ticket.objects.filter(user=request.user).order_by('-updated_at')
     context = {
-        'orders' : orders
+        'orders' : orders,
+        'tickets': tickets
     }
     return render(request, 'account/user_dashboard.html', context)
 

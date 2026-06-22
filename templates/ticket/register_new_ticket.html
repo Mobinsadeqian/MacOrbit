@@ -1,4 +1,102 @@
-<form method="post" action="">
-    customer_name
-    <input type="text" name="name">
-</form>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرکز پشتیبانی مک‌اوربیت | ارسال تیکت جدید</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #0b0f19; }
+    </style>
+</head>
+<body class="text-gray-200 min-h-screen bg-[#0b0f19]">
+
+    <header class="border-b border-gray-900 bg-gray-950/40 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full border-2 border-blue-500 flex items-center justify-center relative">
+                    <div class="w-1.5 h-1.5 bg-cyan-400 rounded-full absolute -top-0.5"></div>
+                    <span class="text-white text-xs font-bold">M</span>
+                </div>
+                <span class="text-base font-black text-white">Mac<span class="text-blue-500">Orbit</span> <span class="text-gray-600 font-normal px-2">|</span> <span class="text-sm font-medium text-gray-400">ارسال تیکت</span></span>
+            </div>
+            <a href="{% url 'user_dashboard' %}" class="text-xs text-gray-400 hover:text-white bg-gray-900 border border-gray-850 px-4 py-2 rounded-xl transition">
+                بازگشت به پنل کاربری →
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-12">
+        
+        <div class="mb-8">
+            <h1 class="text-2xl font-black text-white mb-2">ایجاد تیکت پشتیبانی جدید</h1>
+            <p class="text-xs text-gray-500 leading-relaxed">مشکل یا سوال خود را مطرح کنید. کارشناسان مک‌اوربیت در سریع‌ترین زمان ممکن پاسخگوی شما خواهند بود.</p>
+        </div>
+
+        <div class="bg-gray-950/40 border border-gray-850 backdrop-blur-xl p-6 md:p-8 rounded-3xl shadow-2xl">
+            
+            <form method="POST" action="" enctype="multipart/form-data" class="space-y-6">
+                {% csrf_token %}
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-2 mr-1">موضوع تیکت (title)</label>
+                    <input type="text" name="title" required placeholder="یک عنوان کوتاه و مشخص بنویسید..." 
+                           class="w-full bg-gray-900/40 border border-gray-800 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/30 text-white rounded-xl px-4 py-3 text-sm transition outline-none">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-2 mr-1">بخش مربوطه (department)</label>
+                        <select name="department" class="w-full bg-gray-900/40 border border-gray-800 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/30 text-white rounded-xl px-4 py-3 text-sm transition outline-none cursor-pointer appearance-none">
+                            <option value="appleid" class="bg-gray-950">پشتیبانی خدمات اپل آیدی</option>
+                            <option value="apps" class="bg-gray-950">مشکلات دانلود و نصب نرم‌افزار</option>
+                            <option value="financial" class="bg-gray-950">امور مالی و پرداخت</option>
+                            <option value="general" class="bg-gray-950">سوالات عمومی</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-400 mb-2 mr-1">اولویت پاسخ‌گویی (priroty)</label>
+                        <select name="priroty" class="w-full bg-gray-900/40 border border-gray-800 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/30 text-white rounded-xl px-4 py-3 text-sm transition outline-none cursor-pointer appearance-none">
+                            <option value="low" class="bg-gray-950">کم</option>
+                            <option value="medium" selected class="bg-gray-950">متوسط</option>
+                            <option value="high" class="bg-gray-950 text-amber-400">فوری (High)</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-2 mr-1">متن پیام شما (message)</label>
+                    <textarea name="message" required rows="6" placeholder="جزئیات مشکل یا درخواست خود را کاملاً توضیح دهید..." 
+                              class="w-full bg-gray-900/40 border border-gray-800 focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/30 text-white rounded-xl px-4 py-3 text-sm transition outline-none resize-none leading-relaxed"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-400 mb-2 mr-1">فایل ضمیمه (اختیاری)</label>
+                    <div class="relative group w-full bg-gray-900/20 border border-dashed border-gray-800 hover:border-blue-500/40 rounded-xl transition p-4 flex flex-col items-center justify-center gap-2 cursor-pointer">
+                        <input type="file" name="attachment" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                        <svg class="w-6 h-6 text-gray-500 group-hover:text-blue-400 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                        </svg>
+                        <span class="text-xs text-gray-500 group-hover:text-gray-400 transition">انتخاب اسکرین‌شات یا فایل مربوطه...</span>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-900">
+                    <a href="{% url 'user_dashboard' %}" class="bg-transparent hover:bg-gray-900 border border-transparent hover:border-gray-800 text-gray-400 text-xs font-semibold px-5 py-3 rounded-xl transition">
+                        انصراف
+                    </a>
+                    <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs px-6 py-3 rounded-xl transition shadow-lg shadow-indigo-600/10">
+                        ثبت و ارسال تیکت 🚀
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -60,7 +60,7 @@
                         </div>
                     </a>
 
-                    <a href="/ticket/" class="block p-5 bg-gray-900/40 hover:bg-gray-900/80 border border-gray-800/80 hover:border-indigo-500/50 rounded-2xl transition group relative overflow-hidden">
+                    <a href="{% url 'register_new_ticket' %}" class="block p-5 bg-gray-900/40 hover:bg-gray-900/80 border border-gray-800/80 hover:border-indigo-500/50 rounded-2xl transition group relative overflow-hidden">
                         <div class="absolute top-0 right-0 w-1 h-full bg-indigo-500 transform scale-y-0 group-hover:scale-y-100 transition origin-top"></div>
                         <div class="flex justify-between items-center">
                             <div>
@@ -81,75 +81,157 @@
                 </div>
 
                 <div class="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 backdrop-blur-sm">
-    <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-        آخرین سفارش‌های شما
-    </h3>
+                    <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                        آخرین سفارش‌های شما
+                    </h3>
 
-    {% if orders %}
-        <div class="overflow-x-auto">
-            <table class="w-full text-right border-collapse">
-                <thead>
-                    <tr class="border-b border-gray-800 text-gray-400 text-xs font-semibold">
-                        <th class="pb-3 text-center"># شماره سفارش</th>
-                        <th class="pb-3">نام انگلیسی</th>
-                        <th class="pb-3">ایمیل درخواستی</th>
-                        <th class="pb-3 text-center">وضعیت سرویس</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-800/60 text-sm">
-                    {% for order in orders %}
-                        <tr class="hover:bg-gray-800/20 transition-colors group">
-                            <td class="py-4 text-center font-mono text-gray-500 group-hover:text-gray-400">{{ order.id }}</td>
-                            <td class="py-4 font-medium text-gray-300 font-mono tracking-wide">
-                                {{ order.en_firstname|capfirst }} {{ order.en_lastname|capfirst }}
-                            </td>
-                            <td class="py-4 text-gray-400 font-mono">{{ order.email }}</td>
-                            <td class="py-4 text-center">
-                            {% if order.status == 'pending' %}
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                                    در انتظار ساخت
-                                </span>
-                            {% elif order.status == 'processing' %}
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
-                                    در حال انجام
-                                </span>
-                            {% elif order.status == 'completed' %}
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                                    تحویل داده شده
-                                </span>
-                            {% elif order.status == 'failed' %}
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
-                                    ناموفق
-                                </span>
-                            {% else %}
-                                <span class="text-xs text-gray-400">{{ order.get_status_display }}</span>
-                            {% endif %}
-                        </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% else %}
-        <div class="flex flex-col items-center justify-center py-12 text-center">
-            <div class="w-16 h-16 bg-gray-950 rounded-2xl flex items-center justify-center border border-gray-800 text-gray-600 mb-4 shadow-inner">
-                📦
+                    {% if orders %}
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right border-collapse">
+                                <thead>
+                                    <tr class="border-b border-gray-800 text-gray-400 text-xs font-semibold">
+                                        <th class="pb-3 text-center"># شماره سفارش</th>
+                                        <th class="pb-3">نام انگلیسی</th>
+                                        <th class="pb-3">ایمیل درخواستی</th>
+                                        <th class="pb-3 text-center">وضعیت سرویس</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-800/60 text-sm">
+                                    {% for order in orders %}
+                                        <tr class="hover:bg-gray-800/20 transition-colors group">
+                                            <td class="py-4 text-center font-mono text-gray-500 group-hover:text-gray-400">{{ order.id }}</td>
+                                            <td class="py-4 font-medium text-gray-300 font-mono tracking-wide">
+                                                {{ order.en_firstname|capfirst }} {{ order.en_lastname|capfirst }}
+                                            </td>
+                                            <td class="py-4 text-gray-400 font-mono">{{ order.email }}</td>
+                                            <td class="py-4 text-center">
+                                            {% if order.status == 'pending' %}
+                                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                                    در انتظار ساخت
+                                                </span>
+                                            {% elif order.status == 'processing' %}
+                                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse"></span>
+                                                    در حال انجام
+                                                </span>
+                                            {% elif order.status == 'completed' %}
+                                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                                                    تحویل داده شده
+                                                </span>
+                                            {% elif order.status == 'failed' %}
+                                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-rose-500/10 text-rose-400 border border-rose-500/20">
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
+                                                    ناموفق
+                                                </span>
+                                            {% else %}
+                                                <span class="text-xs text-gray-400">{{ order.get_status_display }}</span>
+                                            {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="flex flex-col items-center justify-center py-12 text-center">
+                            <div class="w-16 h-16 bg-gray-950 rounded-2xl flex items-center justify-center border border-gray-800 text-gray-600 mb-4 shadow-inner">
+                                📦
+                            </div>
+                            <h4 class="text-white font-bold text-base mb-2">هنوز هیچ سفارشی ثبت نکرده‌اید</h4>
+                            <p class="text-gray-500 text-xs max-w-sm leading-relaxed mb-6">
+                                سفارش‌های ساخت اپل آیدی اختصاصی یا اکانت‌های آماده شما در این بخش نمایش داده خواهند شد.
+                            </p>
+                            <a href="/appleid/" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-6 py-3 rounded-xl transition shadow-lg shadow-blue-600/20">
+                                ثبت اولین سفارش
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
-            <h4 class="text-white font-bold text-base mb-2">هنوز هیچ سفارشی ثبت نکرده‌اید</h4>
-            <p class="text-gray-500 text-xs max-w-sm leading-relaxed mb-6">
-                سفارش‌های ساخت اپل آیدی اختصاصی یا اکانت‌های آماده شما در این بخش نمایش داده خواهند شد.
-            </p>
-            <a href="/appleid/" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-6 py-3 rounded-xl transition shadow-lg shadow-blue-600/20">
-                ثبت اولین سفارش
-            </a>
-        </div>
-    {% endif %}
-</div>
+
+            <div class="space-y-4">
+                <div class="flex justify-between items-center mb-1">
+                    <h2 class="text-xs font-bold text-gray-500 tracking-wider uppercase px-1">تیکت‌های پشتیبانی اخیر</h2>
+                    <a href="{% url 'register_new_ticket' %}" class="text-[11px] text-indigo-400 hover:text-indigo-300 transition flex items-center gap-1">
+                        ➕ ارسال تیکت جدید
+                    </a>
+                </div>
+
+                <div class="bg-gray-900/40 border border-gray-800 rounded-3xl p-6 backdrop-blur-sm">
+                    <h3 class="text-white font-bold text-lg mb-6 flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                        درخواست‌های پشتیبانی شما
+                    </h3>
+
+                    {% if tickets %}
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-right border-collapse">
+                                <thead>
+                                    <tr class="border-b border-gray-800 text-gray-400 text-xs font-semibold">
+                                        <th class="pb-3 text-center"># شناسه تیکت</th>
+                                        <th class="pb-3">موضوع تیکت</th>
+                                        <th class="pb-3">دپارتمان</th>
+                                        <th class="pb-3 text-center">آخرین بروزرسانی</th>
+                                        <th class="pb-3 text-center">وضعیت</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-800/60 text-sm">
+                                    {% for ticket in tickets %}
+                                        <tr class="hover:bg-gray-800/20 transition-colors group cursor-pointer" data-url="{% url 'ticket_detail' ticket.id %}" onclick="window.location.href=this.getAttribute('data-url');">
+                                            <td class="py-4 text-center font-mono text-gray-500 group-hover:text-gray-400">#TK-{{ ticket.id }}</td>
+                                            <td class="py-4 font-bold text-gray-200 group-hover:text-indigo-400 transition-colors">
+                                                {{ ticket.title }}
+                                            </td>
+                                            <td class="py-4 text-gray-400 text-xs">
+                                                {{ ticket.get_department_display }}
+                                            </td>
+                                            <td class="py-4 text-center font-mono text-xs text-gray-500">
+                                                {{ ticket.updated_at|date:"Y/m/d - H:i" }}
+                                            </td>
+                                            <td class="py-4 text-center">
+                                                {% if ticket.status == 'open' %}
+                                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                                                        باز شده
+                                                    </span>
+                                                {% elif ticket.status == 'user_replied' %}
+                                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                                        پاسخ کاربر
+                                                    </span>
+                                                {% elif ticket.status == 'answered' %}
+                                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                                        پاسخ داده شده
+                                                    </span>
+                                                {% elif ticket.status == 'closed' %}
+                                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-gray-950 text-gray-500 border border-gray-800">
+                                                        بسته شده
+                                                    </span>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="flex flex-col items-center justify-center py-12 text-center">
+                            <div class="w-16 h-16 bg-gray-950 rounded-2xl flex items-center justify-center border border-gray-800 text-gray-600 mb-4 shadow-inner">
+                                ✉️
+                            </div>
+                            <h4 class="text-white font-bold text-base mb-2">تیکت پشتیبانی ندارید</h4>
+                            <p class="text-gray-500 text-xs max-w-sm leading-relaxed mb-6">
+                                در صورت بروز هرگونه مشکل یا داشتن پرسش درباره سرویس‌ها، می‌توانید با دپارتمان‌های پشتیبانی ما ارتباط برقرار کنید.
+                            </p>
+                            <a href="{% url 'register_new_ticket' %}" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold px-6 py-3 rounded-xl transition shadow-lg shadow-indigo-600/20">
+                                ارسال اولین تیکت پشتیبانی
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
 
         </div>
