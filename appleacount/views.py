@@ -22,6 +22,6 @@ def appleacount_form(request):
             email=email,
             birth_date=birth_date
         )
-        return redirect('home')
+        return redirect('user_dashboard')
         
     return render(request, 'appleacount_form.html')

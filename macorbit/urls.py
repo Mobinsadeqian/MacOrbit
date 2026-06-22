@@ -23,5 +23,6 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('appleid/', include('appleacount.urls')),
     path('account/', include('account.urls'), name='account'),
+    path('ticket/', include('ticket.urls'), name='ticket'),
 
 ]

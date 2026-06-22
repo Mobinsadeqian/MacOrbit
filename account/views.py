@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from appleacount.models import AppleIdOrder
 
 User = get_user_model()
 
@@ -35,7 +36,11 @@ def register_user(request):
 
 @login_required(login_url='login_user')
 def user_dashboard(request):
-    return render(request, 'account/user_dashboard.html')
+    orders = AppleIdOrder.objects.filter(user=request.user).order_by('-id')
+    context = {
+        'orders' : orders
+    }
+    return render(request, 'account/user_dashboard.html', context)
 
 def logout_user(request):
     auth_logout(request)  

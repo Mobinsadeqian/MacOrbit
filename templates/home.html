@@ -27,14 +27,22 @@
                 </div>
                 <span class="text-xl font-black tracking-wider text-white">Mac<span class="text-blue-500">Orbit</span></span>
             </div>
+            
             <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
                 <a href="#" class="text-blue-400 hover:text-white transition">صفحه اصلی</a>
-                <a href="#" class="hover:text-white transition">دانلود نرم‌افزار</a>
-                <a href="appleid/" class="hover:text-white transition">خدمات اپل آیدی</a>
-                <a href="#" class="hover:text-white transition">پشتیبانی و تیکت</a>
+                <a href="#apps" class="hover:text-white transition">دانلود نرم‌افزار</a>
+                <a href="/appleid/" class="hover:text-white transition">خدمات اپل آیدی</a>
+                <a href="{% if request.user.is_authenticated %}{% url 'user_dashboard' %}{% else %}{% url 'login_user' %}{% endif %}" class="hover:text-white transition">پشتیبانی و تیکت</a>
             </nav>
+            
             <div>
-                <a href="/account" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition shadow-lg shadow-blue-600/20">ورود / ثبت نام</a>
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'user_dashboard' %}" class="bg-gray-900 border border-gray-800 hover:border-blue-500/50 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition backdrop-blur-sm">
+                        پنل کاربری ({{ request.user.name }})
+                    </a>
+                {% else %}
+                    <a href="{% url 'login_user' %}" class="bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium px-5 py-2.5 rounded-xl transition shadow-lg shadow-blue-600/20">ورود / ثبت نام</a>
+                {% endif %}
             </div>
         </div>
     </header>
@@ -46,14 +54,14 @@
                 پلتفرم اختصاصی اکوسیستم اپل در ایران
             </div>
             <h1 class="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
-                وارد مدار کاربران <br class="hidden md:block"> حرفه‌ای <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400">اپل</span> شوید
+                 وارد مدار کاربران <br class="hidden md:block"> حرفه‌ای <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400">اپل</span> شوید
             </h1>
             <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-xl">
                 مک‌اوربیت اینجاست تا محدودیت‌ها را دور بزند. از دانلود امن‌ترین نرم‌افزارهای کرک‌شده مک تا ساخت و پشتیبانی فوری اپل آیدی اختصاصی شما.
             </p>
             <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
                 <a href="#apps" class="bg-gray-800 hover:bg-gray-750 border border-gray-750 text-white font-semibold px-8 py-4 rounded-2xl transition text-center">جستجوی نرم‌افزارها</a>
-                <a href="#appleid" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold px-8 py-4 rounded-2xl transition text-center shadow-xl shadow-indigo-600/20">خرید فوری اپل آیدی</a>
+                <a href="/appleid/" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold px-8 py-4 rounded-2xl transition text-center shadow-xl shadow-indigo-600/20">خرید فوری اپل آیدی</a>
             </div>
         </div>
 
@@ -81,7 +89,7 @@
                 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> تحویل آنی اطلاعات برای اکانت‌های آماده</li>
                 <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> تنظیم روی ایمیل شخصی و ریجن دلخواه</li>
             </ul>
-            <a href="#" class="w-full block text-center bg-gray-850 hover:bg-gray-800 border border-gray-800 text-white text-sm font-semibold py-3.5 rounded-xl transition">ورود به میز خدمات اپل آیدی</a>
+            <a href="/appleid/" class="w-full block text-center bg-gray-850 hover:bg-gray-800 border border-gray-800 text-white text-sm font-semibold py-3.5 rounded-xl transition">ورود به میز خدمات اپل آیدی</a>
         </div>
 
         <div id="apps" class="bg-gradient-to-b from-gray-900 to-gray-950 border border-gray-850 p-8 rounded-3xl hover:border-cyan-500/40 transition group relative overflow-hidden">
