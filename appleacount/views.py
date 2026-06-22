@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import AppleIdOrder
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='/account/login/')
+@login_required(login_url='login_user')
 def appleacount_form(request):
     if request.method == "POST":
         fa_firstname = request.POST.get('fa_firstname')
