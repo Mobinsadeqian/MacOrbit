@@ -8,6 +8,8 @@ from django.contrib import messages
 User = get_user_model()
 
 def login_user(request):
+    if request.user.is_authenticated:
+        return redirect('user_dashboard')
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("user_password")
@@ -31,7 +33,7 @@ def register_user(request):
 
     return render(request, 'account/signup.html')
 
-@login_required(login_url='/account/')
+@login_required(login_url='login_user')
 def user_dashboard(request):
     return render(request, 'account/user_dashboard.html')
 
