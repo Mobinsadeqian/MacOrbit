@@ -25,7 +25,7 @@ def ticket_detail(request, ticket_id):
         attachment = request.FILES.get('attachment')
         
         if message_text:
-            # ۱. ثبت پاسخ جدید کاربر
+        
             TicketMessage.objects.create(
                 ticket=ticket,
                 sender=request.user,

@@ -24,5 +24,6 @@ urlpatterns = [
     path('appleid/', include('appleacount.urls')),
     path('account/', include('account.urls'), name='account'),
     path('ticket/', include('ticket.urls'), name='ticket'),
+    path('apps/', include('app.urls'), name='apps'),
 
 ]
