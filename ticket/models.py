@@ -32,7 +32,7 @@ class Ticket(models.Model):
 
     class Meta:
         verbose_name = 'تیکت'
-        verbose_name = "تیکت‌ها"
+        verbose_name_plural = "تیکت‌ها"
         ordering = ['-updated_at']
 
     def __str__(self):
@@ -48,7 +48,7 @@ class TicketMessage(models.Model):
 
     class Meta:
         verbose_name = "پیام تیکت"
-        verbose_name = "پیام‌های تیکت"
+        verbose_name_plural = "پیام‌های تیکت"
         ordering = ['-created_at']
 
     def __str__(self):

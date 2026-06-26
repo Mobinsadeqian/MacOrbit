@@ -56,7 +56,7 @@ class MacApp(models.Model):
         return f"{self.title_en} (v{self.version})"
 
 class DownloadLink(models.Model):
-    app = models.ForeignKey(MacApp, on_delete=models.CASCADE, related_name='download_link', verbose_name='نرم‌افزار مربوطه')
+    app = models.ForeignKey(MacApp, on_delete=models.CASCADE, related_name='download_links', verbose_name='نرم‌افزار مربوطه')
     title = models.CharField(max_length=150, verbose_name='عنوان لینک')
     url = models.URLField(max_length=500, verbose_name='آدرس لینک دانلود')
     created_at = models.DateTimeField(auto_now_add=True)
