@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-clpgh5u%1r2z)%v3pr(d^&s8by*$h_5(w@_9bq6^x+4f1(-bz9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '192.168.1.3']
-
+#ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', 'localhost', '192.168.1.3']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -122,3 +122,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 AUTH_USER_MODEL = 'account.CustomUser'
+
+# این خط به جنگو می‌گوید که به دامنه‌های واسط Serveo برای ارسال فرم‌ها اعتماد کند
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.serveousercontent.com',
+    'https://*.serveo.net',
+]

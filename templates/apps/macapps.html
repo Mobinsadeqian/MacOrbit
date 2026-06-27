@@ -86,12 +86,12 @@
         }
 
         .category-badge:hover, .category-badge.active {
-        background: var(--gradient-primary) !important;
-        border-color: transparent !important;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px var(--glow-blue);
-        color: #ffffff !important;
-    }
+            background: var(--gradient-primary) !important;
+            border-color: transparent !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--glow-blue);
+            color: #ffffff !important;
+        }
 
         /* گرید کارت‌ها */
         .apps-grid {
@@ -141,11 +141,40 @@
             flex: 1;
         }
 
+        .app-title-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
         .app-title-fa {
             font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 4px;
+        }
+
+        /* دکمه اینفو مینی‌مال با تم مک‌اوربیت */
+        .info-popup-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+        }
+
+        .info-popup-btn:hover {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            border-color: rgba(59, 130, 246, 0.4);
         }
 
         .app-title-en {
@@ -181,7 +210,7 @@
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
-        /* توضیحات با کنتراست ملایم */
+        /* توضیحات خلاصه شده در کارت اصلی */
         .app-description {
             color: #b4c2f0;
             font-size: 0.93rem;
@@ -208,7 +237,7 @@
             color: #60a5fa;
         }
 
-        /* باکس دانلود نئونی و درخشان کاملاً شبیه دکمه لندینگ اصلی */
+        /* باکس دانلود نئونی و درخشان */
         .download-section {
             border-top: 1px dashed rgba(255, 255, 255, 0.1);
             padding-top: 20px;
@@ -280,6 +309,106 @@
             color: var(--text-muted);
         }
 
+        /* ==================== استایل پاپ‌آپ (Modal) مدرن اپل استایل ==================== */
+        .mac-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 5, 11, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mac-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mac-modal-content {
+            background: #0e1326;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 550px;
+            padding: 30px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(37, 99, 235, 0.1);
+            transform: scale(0.9);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+        }
+
+        .mac-modal-overlay.active .mac-modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 15px;
+        }
+
+        .modal-title-fa {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .modal-body {
+            color: #d1dbff;
+            font-size: 1rem;
+            line-height: 1.8;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-left: 5px;
+            white-space: pre-line; /* برای حفظ اینترها و خوانا بودن مراحل گام‌به‌گام نصب */
+        }
+
+        /* شخصی‌سازی اسکرول‌بار پاپ‌آپ به سبک مک */
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close-btn:hover {
+            background: #ef4444;
+            color: white;
+            border-color: transparent;
+        }
+
         @media (max-width: 768px) {
             body { padding: 30px 15px; }
             .page-header h1 { font-size: 2.2rem; }
@@ -319,7 +448,14 @@
                             {% endif %}
                             
                             <div class="app-title-wrapper">
-                                <h2 class="app-title-fa">{{ app.title_fa }}</h2>
+                                <div class="app-title-header">
+                                    <h2 class="app-title-fa">{{ app.title_fa }}</h2>
+                                    <button class="info-popup-btn" 
+                                            data-title="راهنمای نصب {{ app.title_fa }}" 
+                                            data-desc="{{ app.installation_guide|escapejs }}">
+                                        <i class="fa-solid fa-info"></i>
+                                    </button>
+                                </div>
                                 <span class="app-title-en">{{ app.title_en }}</span>
                             </div>
                         </div>
@@ -370,18 +506,70 @@
 
         </main>
     </div>
+
+    <div class="mac-modal-overlay" id="macModal">
+        <div class="mac-modal-content">
+            <button class="modal-close-btn" id="closeModal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-header">
+                <h3 class="modal-title-fa" id="modalTitle">راهنمای نصب</h3>
+            </div>
+            <div class="modal-body" id="modalDescription">
+                توضیحات کامل در اینجا قرار می‌گیرد...
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // منطق دکمه‌های ناوبری دسته‌بندی
             const badges = document.querySelectorAll('.category-badge');
-
             badges.forEach(badge => {
                 badge.addEventListener('click', function(e) {
-                    // ۱. حذف کلاس active از تمام دکمه‌ها
                     badges.forEach(b => b.classList.remove('active'));
-                    
-                    // ۲. اضافه کردن کلاس active به دکمه‌ای که روی آن کلیک شده
                     this.classList.add('active');
                 });
+            });
+
+            // منطق کنترل پاپ‌آپ هوشمند
+            const modal = document.getElementById('macModal');
+            const closeModalBtn = document.getElementById('closeModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const infoButtons = document.querySelectorAll('.info-popup-btn');
+
+            infoButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const title = this.getAttribute('data-title');
+                    const desc = this.getAttribute('data-desc');
+
+                    // تنظیم محتوای متنی پاپ‌آپ
+                    modalTitle.textContent = title;
+                    modalDescription.textContent = desc;
+
+                    // باز کردن پاپ‌آپ
+                    modal.classList.add('active');
+                });
+            });
+
+            // بستن با دکمه ضربدر
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+            // بستن با کلیک روی فضای خالی بیرون پاپ‌آپ
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            // بستن با زدن دکمه Escape کیبورد
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    modal.classList.remove('active');
+                }
             });
         });
     </script>
