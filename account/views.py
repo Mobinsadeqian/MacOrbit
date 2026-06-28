@@ -31,6 +31,9 @@ def register_user(request):
         customer_email = request.POST.get('customer_email')
         customer_password = request.POST.get('customer_password')
         user = User.objects.create_user(name=customer_name,username=customer_username, familyname = customer_familyname, email = customer_email, password = customer_password)
+        user.is_staff = False
+        user.is_superuser = False
+        user.save()
         return redirect('login_user')
 
     return render(request, 'account/signup.html')
