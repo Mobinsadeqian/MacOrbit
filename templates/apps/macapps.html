@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دانلود نرم‌افزارهای مک | MacOrbit</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* پالت رنگی دقیقاً مطابق با لندینگ پیج مک‌اوربیت */
-            --bg-main: #060913;          /* پس‌زمینه بسیار تیره سایت */
-            --bg-card: #0c1020;          /* رنگ کارت‌های شیشه‌ای */
-            --text-main: #ffffff;        /* متن‌های اصلی */
-            --text-muted: #8fa0dd;       /* متن‌های فرعی و کم‌رنگ با تم آبی-خاکستری */
-            --accent-blue: #2563eb;      /* آبی اصلی دکمه‌ها */
+            --bg-main: #060913;
+            --bg-card: #0c1020;
+            --text-main: #ffffff;
+            --text-muted: #8fa0dd;
+            --accent-blue: #2563eb;
             --glow-blue: rgba(37, 99, 235, 0.4);
             --gradient-primary: linear-gradient(135deg, #3b82f6, #1d4ed8);
             --border-color: rgba(255, 255, 255, 0.08);
@@ -24,14 +24,15 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+            /* این خط را جایگزین خط قبلی کن */
+            font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }   
 
         body {
             background-color: var(--bg-main);
             color: var(--text-main);
             line-height: 1.7;
-            padding: 60px 20px;
+            padding: 40px 20px 60px 20px;
             background-image: radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
                               radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 40%);
         }
@@ -41,20 +42,86 @@
             margin: 0 auto;
         }
 
-        /* هدر صفحه کاملاً هماهنگ با تایپوگرافی لندینگ */
+        /* ==================== استایل اختصاصی لوگوی جدید مک‌اوربیت ==================== */
+        .brand-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 35px;
+        }
+
+        .brand-logo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: 14px;
+        }
+
+        .brand-logo-link:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* شبیه‌سازی دقیق آیکون باکس تیلوند شما */
+        .logo-box {
+            position: relative;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* نقطه سیان بالای حرف M (-top-1) */
+        .logo-dot {
+            position: absolute;
+            top: -4px;
+            width: 8px;
+            height: 8px;
+            background-color: #22d3ee; /* رنگ دقیق cyan-400 */
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22d3ee;
+        }
+
+        .logo-text-letter {
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+
+        /* متن تایپوگرافی لوگو */
+        .brand-text {
+            font-size: 1.45rem;
+            font-weight: 900; /* font-black */
+            letter-spacing: -0.5px; /* tracking-wider معکوس برای فونت‌های انگلیسی در هدر فارسی */
+            color: #ffffff;
+        }
+
+        .brand-text .text-blue {
+            color: #3b82f6; /* رنگ دقیق blue-500 */
+        }
+
+        /* ==================== هدر و باقی بخش‌ها ==================== */
         .page-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
 
         .page-header h1 {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 800;
             margin-bottom: 15px;
-            letter-spacing: -0.5px;
             background: linear-gradient(135deg, #ffffff 60%, #93c5fd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            /* خط زیر را اضافه کن تا فونت هدر با بقیه متن‌ها یکی شود */
+            font-family: inherit;
         }
 
         .page-header p {
@@ -64,7 +131,6 @@
             margin: 0 auto;
         }
 
-        /* نویگیشن و دسته‌بندی‌ها به سبک دکمه‌های توخالی لندینگ */
         .categories-container {
             display: flex;
             flex-wrap: wrap;
@@ -93,14 +159,12 @@
             color: #ffffff !important;
         }
 
-        /* گرید کارت‌ها */
         .apps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
             gap: 30px;
         }
 
-        /* کارت‌ها با استایل بلورین و دارک */
         .app-card {
             background: var(--bg-card);
             border-radius: var(--border-radius);
@@ -120,7 +184,6 @@
             box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
         }
 
-        /* بخش اطلاعات اصلی نرم‌افزار */
         .app-top {
             display: flex;
             gap: 18px;
@@ -155,7 +218,6 @@
             margin-bottom: 4px;
         }
 
-        /* دکمه اینفو مینی‌مال با تم مک‌اوربیت */
         .info-popup-btn {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--border-color);
@@ -183,7 +245,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* بج‌های مینی‌مال نئونی */
         .badges-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -210,7 +271,6 @@
             border: 1px solid rgba(16, 185, 129, 0.2);
         }
 
-        /* توضیحات خلاصه شده در کارت اصلی */
         .app-description {
             color: #b4c2f0;
             font-size: 0.93rem;
@@ -221,7 +281,6 @@
             overflow: hidden;
         }
 
-        /* جزئیات فنی ریز */
         .app-meta-specs {
             display: flex;
             justify-content: space-between;
@@ -237,7 +296,6 @@
             color: #60a5fa;
         }
 
-        /* باکس دانلود نئونی و درخشان */
         .download-section {
             border-top: 1px dashed rgba(255, 255, 255, 0.1);
             padding-top: 20px;
@@ -309,7 +367,7 @@
             color: var(--text-muted);
         }
 
-        /* ==================== استایل پاپ‌آپ (Modal) مدرن اپل استایل ==================== */
+        /* ==================== استایل پاپ‌آپ (Modal) ==================== */
         .mac-modal-overlay {
             position: fixed;
             top: 0;
@@ -371,10 +429,9 @@
             max-height: 300px;
             overflow-y: auto;
             padding-left: 5px;
-            white-space: pre-line; /* برای حفظ اینترها و خوانا بودن مراحل گام‌به‌گام نصب */
+            white-space: pre-line;
         }
 
-        /* شخصی‌سازی اسکرول‌بار پاپ‌آپ به سبک مک */
         .modal-body::-webkit-scrollbar {
             width: 6px;
         }
@@ -418,6 +475,16 @@
 <body>
 
     <div class="container">
+        
+        <div class="brand-container">
+            <a href="/" class="brand-logo-link" title="صفحه اصلی مک‌اوربیت">
+                <div class="logo-box">
+                    <div class="logo-dot"></div>
+                    <span class="logo-text-letter">M</span>
+                </div>
+                <span class="brand-text">Mac<span class="text-blue">Orbit</span></span>
+            </a>
+        </div>
         
         <header class="page-header">
             <h1>دانلود امن نرم‌افزارهای مک</h1>
@@ -523,7 +590,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // منطق دکمه‌های ناوبری دسته‌بندی
             const badges = document.querySelectorAll('.category-badge');
             badges.forEach(badge => {
                 badge.addEventListener('click', function(e) {
@@ -532,7 +598,6 @@
                 });
             });
 
-            // منطق کنترل پاپ‌آپ هوشمند
             const modal = document.getElementById('macModal');
             const closeModalBtn = document.getElementById('closeModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -544,28 +609,23 @@
                     const title = this.getAttribute('data-title');
                     const desc = this.getAttribute('data-desc');
 
-                    // تنظیم محتوای متنی پاپ‌آپ
                     modalTitle.textContent = title;
                     modalDescription.textContent = desc;
 
-                    // باز کردن پاپ‌آپ
                     modal.classList.add('active');
                 });
             });
 
-            // بستن با دکمه ضربدر
             closeModalBtn.addEventListener('click', () => {
                 modal.classList.remove('active');
             });
 
-            // بستن با کلیک روی فضای خالی بیرون پاپ‌آپ
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.classList.remove('active');
                 }
             });
 
-            // بستن با زدن دکمه Escape کیبورد
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && modal.classList.contains('active')) {
                     modal.classList.remove('active');
